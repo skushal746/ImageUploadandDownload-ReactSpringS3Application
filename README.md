@@ -1,1 +1,1 @@
-# ReactSpringS3Application
+# Application to test react, spring, AWS S3.
