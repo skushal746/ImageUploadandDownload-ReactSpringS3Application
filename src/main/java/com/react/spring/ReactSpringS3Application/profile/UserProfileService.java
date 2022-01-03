@@ -76,7 +76,7 @@ public class UserProfileService {
         System.out.println(BucketName.PROFILE_IMAGE.getBucketName());
 
         String path = String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), userProfileOfTheUser.getUserProfileId());
-        String fileName = String.format("%s-%s", file.getName(), UUID.randomUUID());
+        String fileName = String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
         try {
             fileStore.save(path, fileName, Optional.of(metaData), file.getInputStream());
         } catch (IOException e) {
