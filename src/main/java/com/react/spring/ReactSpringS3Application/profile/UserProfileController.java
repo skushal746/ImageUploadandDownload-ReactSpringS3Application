@@ -31,7 +31,7 @@ public class UserProfileController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public void uploadUserProfileImage(@PathVariable("userProfileId") UUID userProfileId,
-                                        @RequestParam("file") MultipartFile file) {
+                                        @RequestParam("file") MultipartFile file) throws IllegalStateException {
         userProfileService.uploadUserProfileImage(userProfileId, file);
     }
 

@@ -10,4 +10,8 @@ public enum BucketName {
     BucketName(String bucketName) {
         this.bucketName = bucketName;
     }
+
+    public String getBucketName() {
+        return bucketName;
+    }
 }
