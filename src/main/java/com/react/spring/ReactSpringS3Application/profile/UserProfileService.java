@@ -79,8 +79,33 @@ public class UserProfileService {
         String fileName = String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
         try {
             fileStore.save(path, fileName, Optional.of(metaData), file.getInputStream());
+            userProfileOfTheUser.setUserProfileImageLink(fileName);
         } catch (IOException e) {
             throw new IllegalStateException("Exception while saving the file in the S3");
         }
+    }
+
+    public byte[] downloadUserProfilemage(UUID userProfileId) {
+
+        List<UserProfile> userProfiles = userProfileDataAccessService.getUserProfiles();
+        UserProfile userProfileOfTheUser = null;
+        for(UserProfile userProfile : userProfiles)
+        {
+            if(userProfile.getUserProfileId().equals(userProfileId))
+                userProfileOfTheUser = userProfile;
+        }
+
+        if(userProfileOfTheUser==null)
+        {
+            throw new IllegalStateException("UUID does not belong to any user currently in the system");
+        }
+
+        String path = String.format("%s/%s",
+                BucketName.PROFILE_IMAGE.getBucketName(),
+                userProfileOfTheUser.getUserProfileId());
+
+        return userProfileOfTheUser.getUserProfileImageLink()
+                .map(key -> fileStore.download(path, key))
+                .orElse(new Byte[0]);
     }
 }
