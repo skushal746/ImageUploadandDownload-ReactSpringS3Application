@@ -105,7 +105,7 @@ public class UserProfileService {
                 userProfileOfTheUser.getUserProfileId());
 
         return userProfileOfTheUser.getUserProfileImageLink()
-                .map(key -> fileStore.download(path, key))
-                .orElse(new Byte[0]);
+        		.map(key -> fileStore.download(path, key))
+                .orElse(new byte[0]);
     }
 }
