@@ -1,7 +1,6 @@
 package com.react.spring.ReactSpringS3Application.config;
 
 import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
@@ -16,8 +15,8 @@ public class AmazonConfig {
     @Bean
     public AmazonS3 s3() {
         AWSCredentials awsCredentials = new BasicAWSCredentials(
-                "",//"Enter the access key received from AWS"
-                ""//"Enter the secret key received from AWS"
+                "AKIATZ6LMBPPIEQYEHHH",//"Enter the access key received from AWS"
+                "YzsmDgtZD2/lpnDWn7qMTqsIHdSzgyfFpgSIgHUZ"//"Enter the secret key received from AWS"
         );
 
         return AmazonS3ClientBuilder
